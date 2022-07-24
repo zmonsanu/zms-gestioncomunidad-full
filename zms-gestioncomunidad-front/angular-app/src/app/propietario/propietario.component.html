@@ -1,10 +1,53 @@
 <div class="main-content" >
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Lista de propietarios</h4>
+                        <p class="category">seleccionar para editar</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table mat-table [dataSource]="propietarios" class="mat-elevation-z8 demo-table">
+                            <ng-container matColumnDef="idPropietario">
+                                <th mat-header-cell *matHeaderCellDef>ID</th>
+                                <td mat-cell *matCellDef="let propietario">{{propietario.idPropietario}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="nombre">
+                                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                                <td mat-cell *matCellDef="let propietario">{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="numeroDocumento">
+                                <th mat-header-cell *matHeaderCellDef>Nº Documento</th>
+                                <td mat-cell *matCellDef="let propietario">{{propietario.numeroDocumento}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef>EMAIL</th>
+                                <td mat-cell *matCellDef="let propietario">{{propietario.email}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="movil">
+                                <th mat-header-cell *matHeaderCellDef>MOVIL</th>
+                                <td mat-cell *matCellDef="let propietario">{{propietario.movil}}</td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="filacabecera"></tr>
+                            <tr
+                                mat-row
+                                (click)="onClick(row)"
+                                [class.demo-row-is-clicked]=""
+                                 *matRowDef="let row; columns: filacabecera;"></tr>
+                         </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Edit Profile</h4>
+                        <h4 class="title">Editar Datos</h4>
                     </div>
                     <div class="content">
                         <form>
@@ -17,8 +60,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre" value= "xxxxxx">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -119,3 +162,4 @@
         </div>
     </div>
 </div>
+

@@ -9,13 +9,10 @@ import { NguiMapModule} from '@ngui/map';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
-import { UserComponent } from '../../user/user.component';
-import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { UpgradeComponent } from '../../upgrade/upgrade.component';
 
 
 @NgModule({
@@ -28,13 +25,11 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
   ],
   declarations: [
     HomeComponent,
-    UserComponent,
-    TablesComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,
-    NotificationsComponent,
-    UpgradeComponent
+    NotificationsComponent
+    //UpgradeComponent
   ]
 })
 
