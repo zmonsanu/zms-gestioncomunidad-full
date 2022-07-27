@@ -1,6 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { PropietarioComponent } from './propietario/propietario.component';
 import { ViviendaComponent } from './vivienda/vivienda.component';
+import { PropietarioDataComponent } from './propietario/data/propietario-data/propietario-data.component';
 
 @NgModule({
   imports: [
@@ -27,13 +29,15 @@ import { ViviendaComponent } from './vivienda/vivienda.component';
     FooterModule,
     SidebarModule,
     MatTableModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     PropietarioComponent,
-    ViviendaComponent
+    ViviendaComponent,
+    PropietarioDataComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

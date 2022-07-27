@@ -3,6 +3,7 @@ import { urlToHttpOptions } from 'url';
 import {PropietarioService} from './service/propietario.service'
 import {Propietario} from '../propietario/entity/propietario'
 import {MatTable} from '@angular/material/table';
+import { PropietarioDataComponent } from './data/propietario-data/propietario-data.component';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class PropietarioComponent implements OnInit {
   filacabecera:string[]=['idPropietario', 'nombre', 'numeroDocumento', 'email', 'movil']
   filasPropietarios: Propietario [];
   loading: boolean = false;
+  mostrarDetalles: boolean = false;
   errorMessage;
   selectedPropietario:Propietario;
 
@@ -24,8 +26,7 @@ export class PropietarioComponent implements OnInit {
   constructor(private propietarioService: PropietarioService ) { }
 
   ngOnInit() {
-    this.getPropietarios();
-    
+    this.getPropietarios(); 
   }
 
   getPropietarios() {
@@ -49,6 +50,7 @@ export class PropietarioComponent implements OnInit {
 
   onClick(row:Propietario) {
     this.selectedPropietario = row;
+    this.mostrarDetalles = true;
     console.log(this.selectedPropietario);
   }
 }
