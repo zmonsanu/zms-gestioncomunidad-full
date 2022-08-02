@@ -1,6 +1,7 @@
 package com.zms.gestioncomunidad.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class PropietarioServiceImpl implements PropietarioService {
     }
 
     @Override
-    public Propietario getPropietarioById(long id) {
-        return propietarioRepository.getReferenceById(id);
+    public Optional<Propietario> getPropietarioById(long id) {
+        return propietarioRepository.findById(id);
     }
 
     @Override

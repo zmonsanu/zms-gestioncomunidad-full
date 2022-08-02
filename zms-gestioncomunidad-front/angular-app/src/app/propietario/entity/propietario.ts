@@ -14,7 +14,5 @@ export class Propietario {
   provincia:string;
   viviendas: Vivienda [];
   constructor() {
-
   }
-
 }

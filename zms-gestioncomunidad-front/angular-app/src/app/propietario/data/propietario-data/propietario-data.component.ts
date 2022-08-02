@@ -1,6 +1,7 @@
 import { Component, OnInit ,Input, OnChanges } from '@angular/core';
 import { Propietario } from 'app/propietario/entity/propietario';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { PropietarioService } from 'app/propietario/service/propietario.service';
 
 @Component({
   selector: 'app-propietario-data',
@@ -10,8 +11,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class PropietarioDataComponent implements OnInit, OnChanges {
 
   @Input() propietario: Propietario; 
-  
-  constructor( private fb: FormBuilder) { 
+
+  constructor( private fb: FormBuilder, private propietarioService: PropietarioService) { 
 
   }
 
@@ -76,6 +77,40 @@ export class PropietarioDataComponent implements OnInit, OnChanges {
         Validators.maxLength(100),
       ]],
     });
+    }
+
+    save() {
+      if (this.propietarioForm.invalid) {
+        alert('Invalid input');
+        return;
+      }
+      if (this.propietario.idPropietario) {
+        this.updatePropietario(this.propietario);
+      } else {
+        this.createPropietario(this.propietario);
+      }
+    }
+
+    createPropietario(propietario: Propietario) {
+      this.propietarioService.save(propietario).subscribe(
+        propietario => {
+          this.updatePropietario(propietario);
+        },
+        error => {
+          //this.growlService.showError('Error', error);
+        }
+      );
+    }
+
+    updatePropietario(propietario: Propietario) {
+      this.propietarioService.save(this.propietarioForm.getRawValue()).subscribe(
+        propietario => {
+          this.propietario = propietario;
+          this.buildForm();
+        },
+        error => {
+        }
+      );
     }
 
 }
