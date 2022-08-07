@@ -30,7 +30,7 @@ public class PropietarioServiceImpl implements PropietarioService {
         return propietarioRepository.findByNumeroDocumento(numeroDocumento);
     }
 
-    public void save(Propietario propietario) {
-        propietarioRepository.save(propietario);
+    public Propietario save(Propietario propietario) {
+        return propietarioRepository.save(propietario);
     }
 }

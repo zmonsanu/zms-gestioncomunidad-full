@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zms.gestioncomunidad.model.Propietario;
 import com.zms.gestioncomunidad.service.PropietarioService;
 
 @RestController
-@CrossOrigin(origins = "*" ,maxAge = 3600)
+@RequestMapping("/propietarios")
 public class PropietarioController {
 
         private PropietarioService propietarioService;
@@ -27,7 +28,7 @@ public class PropietarioController {
             this.propietarioService = propietarioService;
         }
 
-        @GetMapping ("/propietarios")
+        @GetMapping ("/all")
         public List<Propietario> getAllPropietarios() {
             return propietarioService.getAllPropietarios();
         }
@@ -46,10 +47,9 @@ public class PropietarioController {
             return propietarioService.getPropietarioByNumeroDocumento(numeroDocumento);
         }
 
-        @PutMapping("/propietario/{id}")
-        public ResponseEntity<Propietario> updatePropietario(@PathVariable(value = "id") long idPropietario,
-          @RequestBody Propietario propietarioDetalle) {
-             Optional<Propietario>  propietarioOpt = propietarioService.getPropietarioById(idPropietario);
+        @PostMapping("/propietario")
+        public ResponseEntity<Propietario> updatePropietario(@RequestBody Propietario propietarioDetalle) {
+             Optional<Propietario>  propietarioOpt = propietarioService.getPropietarioById(propietarioDetalle.getIdPropietario());
              Propietario propietario;
              if (propietarioOpt.isPresent()) {
                 propietario = propietarioOpt.get();
@@ -70,8 +70,8 @@ public class PropietarioController {
              
         }
 
-        @PostMapping("/propietario/")
-        public void savePropietario(Propietario propietario) {
-            propietarioService.save(propietario);
+        @PutMapping("/propietario")
+        public Propietario savePropietario(@RequestBody Propietario propietario) {
+            return propietarioService.save(propietario);
         }
     }

@@ -6,17 +6,24 @@
         <div class="content">
             <form  [formGroup]="propietarioForm">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" class="form-control" disabled placeholder="ID" value="nom" formControlName="idPropietario">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Nº Documento</label>
                             <input type="text" class="form-control" disabled placeholder="Identificación" value="nom" formControlName="numeroDocumento">
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email" required>
+                            
                         </div>
                     </div>
                 </div>
@@ -26,18 +33,21 @@
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" class="form-control" placeholder="Nombre" value= "nomb" formControlName="nombre">
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Primer Apellido</label>
                             <input type="text" class="form-control" placeholder="Primer Apellido" value="ape1" formControlName="apellido1">
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Segundo Apellido</label>
                             <input type="text" class="form-control" placeholder="Segundo Apellido" value="ap2" formControlName="apellido2">
+                            
                         </div>
                     </div>
                 </div>
@@ -47,6 +57,7 @@
                         <div class="form-group">
                             <label>Direccion</label>
                             <input type="text" class="form-control" placeholder="Direccion" value="" formControlName="direccion">
+                            
                         </div>
                     </div>
                 </div>
@@ -56,18 +67,21 @@
                         <div class="form-group">
                             <label>Municipio</label>
                             <input type="text" class="form-control" placeholder="Municipio" value="" formControlName="municipio">
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Provincia</label>
                             <input type="text" class="form-control" placeholder="Provincia" value="" formControlName="provincia">
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Movil</label>
                             <input type="text" class="form-control" placeholder="Móvil" formControlName="movil">
+                            
                         </div>
                     </div>
                 </div>
@@ -77,6 +91,7 @@
                         <div class="form-group">
                             <label>IBAN</label>
                             <input type="text" class="form-control" placeholder="IBAN" value= "" formControlName="iban">
+                            
                         </div>
                     </div>
                 </div>

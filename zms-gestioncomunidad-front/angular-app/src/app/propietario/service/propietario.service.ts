@@ -3,7 +3,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Propietario } from '../entity/propietario';
+import { HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    Accept: `application/json, text/plain, */*`,
+    //'Access-Control-Allow-Origin':  '*',
+    //'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+   // Authorization: 'my-auth-token'
+  })
+};
 
 
 @Injectable({
@@ -11,12 +21,13 @@ import { Propietario } from '../entity/propietario';
 })
 export class PropietarioService {
 
-    private basePath:string = "http://localhost:8080/";
+    private basePath:string = "http://localhost:8080/propietarios";
     private baseApiUrl: string;
     private propietarioUrl: string;
     propietarios:any[]= [];
     propietario: any;
     errorMessage: any;
+    
 
     constructor(public http: HttpClient) { 
       this.baseApiUrl = this.basePath;
@@ -24,29 +35,28 @@ export class PropietarioService {
     }
 
     getPropietarios(): Observable<any> {
-        let urlSearch = `propietarios`;
+        let urlSearch = `/all`;
         let url= this.baseApiUrl + urlSearch;
         return this.http.get(url)
     }
 
     save(propietario: Propietario) {
       if (propietario.idPropietario) {
-        return this.put(propietario);
+        return this.post(propietario);
       }
-  
-      return this.post(propietario);
+      return this.put(propietario);
     }
 
     private post(propietario: Propietario) {
-      return this.http.post<any>(this.propietarioUrl, propietario).pipe(
-        map(body => body.data),
+      console.log(propietario);
+      return this.http.post<Propietario>(`${this.baseApiUrl}/propietario`, propietario, httpOptions).pipe(
+        map(body => body),
         catchError(err => this.handleError(err))
       );
     }
 
-    private put(propietario: Propietario) {
-      console.log(propietario)
-      const url = `${this.propietarioUrl}/${propietario.idPropietario}`; 
+    private put(propietario: Propietario) {      
+      const url = `${this.baseApiUrl}/propietario/${propietario.idPropietario}`; 
       return this.http.put<any>(url, propietario).pipe(
         map(body => body.data),
         catchError(err => this.handleError(err))

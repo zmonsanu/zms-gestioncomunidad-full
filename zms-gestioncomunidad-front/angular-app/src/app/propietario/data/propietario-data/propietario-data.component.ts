@@ -19,7 +19,7 @@ export class PropietarioDataComponent implements OnInit, OnChanges {
   propietarioForm : FormGroup;
 
   ngOnInit(): void {
-    
+    this.buildForm();
   }
 
   ngOnChanges() {
@@ -36,6 +36,9 @@ export class PropietarioDataComponent implements OnInit, OnChanges {
 
   private buildForm() {
     this.propietarioForm = this.fb.group({
+      'idPropietario': [this.propietario.idPropietario, [
+        Validators.required,
+      ]],
       'nombre': [this.propietario.nombre, [
         Validators.required,
         Validators.maxLength(100),
@@ -61,19 +64,15 @@ export class PropietarioDataComponent implements OnInit, OnChanges {
         Validators.maxLength(100),
       ]],
       'direccion': [this.propietario.direccion, [
-        Validators.required,
         Validators.maxLength(100),
       ]],
       'municipio': [this.propietario.municipio, [
-        Validators.required,
         Validators.maxLength(100),
       ]],
       'provincia': [this.propietario.provincia, [
-        Validators.required,
         Validators.maxLength(100),
       ]],
       'iban': [this.propietario.iban, [
-        Validators.required,
         Validators.maxLength(100),
       ]],
     });

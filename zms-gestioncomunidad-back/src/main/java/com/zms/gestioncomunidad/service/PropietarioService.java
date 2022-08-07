@@ -9,7 +9,7 @@ public interface PropietarioService {
 
     List<Propietario> getAllPropietarios();
 
-    void save(Propietario propietario);
+    Propietario save(Propietario propietario);
 
     Optional<Propietario> getPropietarioById(long id);
 
